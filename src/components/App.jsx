@@ -1,11 +1,10 @@
 import React from "react";
-// import WordList from "./words/WordList";
-import CreateProject from "./projects/CreateProject";
+import CreateProject from "./CreateProject";
 
 class App extends React.Component {
   render() {
     return (
-      <div className="" style={{ marginTop: "10px" }}>
+      <div className="container">
         <CreateProject />
       </div>
     );

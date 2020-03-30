@@ -6,15 +6,15 @@ const initialState = {
 
 const asyncReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_WORDS":
+    case "FETCH_USER":
       return Object.assign({}, state, {
         isFetching: true,
         userData: {},
         isError: false
       });
-    case "FETCHED_WORDS":
+    case "FETCHED_USER":
       return Object.assign({}, state, {
-        userData: action.response.data,
+        userData: action.data,
         isFetching: false,
         isError: false
       });
