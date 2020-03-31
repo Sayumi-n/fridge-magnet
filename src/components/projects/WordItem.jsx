@@ -1,7 +1,7 @@
 import React from "react";
 const WordItem = ({ word, onWordSelect }) => {
   return (
-    <li className="" onClick={() => onWordSelect(word)}>
+    <li className="wordItem" onDoubleClick={() => onWordSelect(word)}>
       <span className="wordSpan">{word}</span>
     </li>
   );

@@ -23,7 +23,9 @@ export const thunk_action_creator = userInput => {
   const term = userInput.replace(/\s/g, "");
   store.dispatch(fetch_post());
   return function(dispatch, getState) {
-    return fetch(`https://api.datamuse.com/words?topics=${term},verb&max=125`)
+    return fetch(
+      `https://api.datamuse.com/words?topics=${term},verb,pronoun&max=125`
+    )
       .then(data => data.json())
       .then(data => {
         if (data.message === "Not Found") {
