@@ -1,20 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
-import WordList from "./WordList";
-import { thunk_action_creator } from "../../actions/fetchAction";
+// import WordList from "./WordList";
+// import { thunk_action_creator } from "../../actions/fetchAction";
 import Phrase from "./Phrase";
+import { createProject } from "../../actions/projectAction";
+import GenerateMagnet from "./GenerateMagnet";
 
 class CreateProject extends React.Component {
   state = {
-    selectedWord: "",
-    phraseSave: ""
+    selectedWord: ""
   };
-  handleSubmit = e => {
-    e.preventDefault();
-    const userInput = this.getUserInput.value;
-    this.props.dispatch(thunk_action_creator(userInput));
-    this.getUserInput.value = "";
-  };
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   const userInput = this.getUserInput.value;
+  //   this.props.dispatch(thunk_action_creator(userInput));
+  //   this.getUserInput.value = "";
+  // };
 
   onWordSelect = word => {
     this.setState({
@@ -29,15 +30,13 @@ class CreateProject extends React.Component {
   };
   onPhraseSave = e => {
     e.preventDefault();
-    this.setState({
-      phraseSave: [...this.state.selectedWord]
-    });
+    this.props.createProject(this.state.selectedWord);
   };
   render() {
     return (
       <div className="row">
-        <h4 className="title">Create new poetry</h4>
-        <div className="col s12 m12 l7 magnet-area">
+        <h5 className="title">Create new poetry</h5>
+        {/* <div className="col s12 m12 l7 magnet-area">
           <div className="row">
             <form onSubmit={this.handleSubmit} className="form">
               <div className="input-field user-input col l6 s12 offset-l3">
@@ -55,8 +54,8 @@ class CreateProject extends React.Component {
                 </button>
               </div>
             </form>
-          </div>
-          <div className="wordList">
+          </div> */}
+        {/* <div className="wordList">
             {this.props.data.isFetching ? <p>Loading...</p> : null}
             {this.props.data.isError ? (
               <p className="error">Try with different noun!</p>
@@ -68,7 +67,8 @@ class CreateProject extends React.Component {
               />
             ) : null}
           </div>
-        </div>
+        </div> */}
+        <GenerateMagnet onWordSelect={this.onWordSelect} />
         <div className="col s12 m12 l5 center phrase-area">
           <div className="row">
             <div className="phrase-container">
@@ -109,9 +109,16 @@ class CreateProject extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+// const mapStateToProps = state => {
+//   return {
+//     data: state.async
+//   };
+// };
+
+const mapDispatchToProps = dispatch => {
   return {
-    data: state.async
+    createProject: project => dispatch(createProject(project))
   };
 };
-export default connect(mapStateToProps)(CreateProject);
+
+export default connect(null, mapDispatchToProps)(CreateProject);
