@@ -20,7 +20,7 @@ export class SignIn extends Component {
     return (
       <div>
         <div className="container">
-          <from onSubmit={this.onFromSubmit} className="white">
+          <form onSubmit={this.onFromSubmit} className="white">
             <h5 className="grey-text text-darken-3">Sign Up</h5>
             <div className="input-field">
               <label htmlFor="email">Email</label>
@@ -41,7 +41,7 @@ export class SignIn extends Component {
             <div className="input-filed">
               <button className="btn pink lighten-1 z-depth-0">Sign Up</button>
             </div>
-          </from>
+          </form>
         </div>
       </div>
     );

@@ -11,12 +11,11 @@ const Phrase = ({ word }) => {
   }
 
   const userPhrase = word.map((w, index) => (
-    <div className="phrase-item-margin">
-      <span key={index} className="phrase-item">
-        {w}
-      </span>
+    <div key={index} className="phrase-item-margin">
+      <span className="phrase-item">{w}</span>
     </div>
   ));
+
   return <div className="flex-container">{userPhrase}</div>;
 };
 
