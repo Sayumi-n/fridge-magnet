@@ -3,12 +3,9 @@ import ProjectSummary from "./ProjectSummary";
 
 const ProjectList = ({ projects }) => {
   return (
-    <div className="project-list section">
-      {/* <ProjectSummary />
-      <ProjectSummary />
-      <ProjectSummary /> */}
+    <div className="col s12 m12">
       {projects &&
-        projects.map(project => {
+        projects.map((project) => {
           return <ProjectSummary project={project} key={project.id} />;
         })}
     </div>

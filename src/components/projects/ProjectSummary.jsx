@@ -1,12 +1,21 @@
 import React from "react";
 
-const ProjectSummary = () => {
+const ProjectSummary = (project) => {
   return (
-    <div className="card z-depth-0 project-summary">
-      <div className="card-content grey-text text-darken-3">
-        <span className="card-titile">Title</span>
+    <div className="card">
+      <div className="card-content project-summary-phrase">
+        {project.project.selectedWord.map((word, index) => {
+          return (
+            <span className="wordItem-dashboard" key={index}>
+              {word}
+            </span>
+          );
+        })}
+      </div>
+
+      <div className="card-content ">
         <p>Phrase by Sayumi</p>
-        <p className="grey-text">30 Mar, 2am</p>
+        <p>Created at 3pm</p>
       </div>
     </div>
   );
