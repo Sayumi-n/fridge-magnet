@@ -5,28 +5,33 @@ import { connect } from "react-redux";
 import Phrase from "./Phrase";
 import { createProject } from "../../actions/projectAction";
 import GenerateMagnet from "./GenerateMagnet";
+// import { Redirect } from "react-router-dom";
 
 class CreateProject extends React.Component {
   state = {
-    selectedWord: ""
+    selectedWord: "",
   };
 
-  onWordSelect = word => {
+  onWordSelect = (word) => {
     this.setState({
-      selectedWord: [...this.state.selectedWord, word]
+      selectedWord: [...this.state.selectedWord, word],
     });
   };
-  handleClear = e => {
+  handleClear = (e) => {
     e.preventDefault();
     this.setState({
-      selectedWord: ""
+      selectedWord: "",
     });
   };
-  onPhraseSave = e => {
+  onPhraseSave = (e) => {
     e.preventDefault();
     this.props.createProject(this.state);
+    this.props.history.push("/");
   };
   render() {
+    const { auth } = this.props;
+    // if (!auth.uid) return <Redirect to="/signin" />;
+    // console.log(this.state.selectedWord);
     return (
       <div className="row">
         <h5 className="title">Create new poetry</h5>
@@ -43,22 +48,36 @@ class CreateProject extends React.Component {
           <div className="row">
             <div className="col s12 m12 l12 project-submit">
               <form>
-                <button
+                {!this.state.selectedWord && auth.uid === false ? (
+                  <button
+                    onClick={this.onPhraseSave}
+                    className="waves-effect waves-light btn project-submit-btn blue-grey darken-1"
+                  >
+                    Save
+                  </button>
+                ) : null}
+                {/* <button
                   onClick={this.onPhraseSave}
                   className="waves-effect waves-light btn project-submit-btn blue-grey darken-1"
                 >
                   Save
-                </button>
+                </button> */}
                 <button
                   onClick={this.handleClear}
-                  className="waves-effect waves-light btn project-submit-btn #757575 blue-grey darken-1"
+                  className="waves-effect waves-light btn project-submit-btn blue-grey darken-1 "
                 >
                   Clear
                 </button>
-                <br />
+
                 <button
                   onClick={this.handleClear}
-                  className="waves-effect waves-light btn project-submit-btn#616161 blue-grey darken-1"
+                  className="waves-effect waves-light btn project-submit-btn  blue-grey darken-1"
+                >
+                  Save as an image&thinsp;<i className="far fa-image"></i>
+                </button>
+                <button
+                  onClick={this.handleClear}
+                  className="waves-effect waves-light btn project-submit-btn blue-grey darken-1"
                 >
                   Share with twitter&thinsp;<i className="fab fa-twitter"></i>
                 </button>
@@ -71,16 +90,16 @@ class CreateProject extends React.Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     data: state.async
-//   };
-// };
-
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = (state) => {
   return {
-    createProject: project => dispatch(createProject(project))
+    auth: state.firebase.auth,
   };
 };
 
-export default connect(null, mapDispatchToProps)(CreateProject);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createProject: (project) => dispatch(createProject(project)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProject);

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const SignedOutLinks = () => {
   return (
-    <ul className="right">
+    <ul id="nav-mobile" className="right hide-on-small-only">
       <li>
         <NavLink to="/signup">Sign Up</NavLink>
       </li>

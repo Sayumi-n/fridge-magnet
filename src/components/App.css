@@ -18,16 +18,49 @@ h1 {
 button {
   font-family: "Duru Sans", sans-serif;
 }
+nav {
+  text-align: left;
+}
 
+.sign-in-form {
+  text-align: center;
+  width: 300px;
+  display: inline-block;
+  margin-top: 2%;
+}
+
+.logo {
+  margin-left: 10px;
+}
+#nav-mobile {
+  text-align: left;
+}
+.signup-link {
+  margin-top: 30px;
+}
+.here {
+  color: #e91e63;
+}
+.dashboard-link {
+  color: #e91e63;
+  font-size: 20px;
+}
+.dashboard-link:hover {
+  text-decoration: underline;
+}
 .container {
   width: 90%;
   margin: 0 5%;
   padding: 0;
 }
+.dashboard {
+  margin-top: 2%;
+}
 .row {
   width: 100%;
   margin: 0;
-  padding: 0;
+
+  padding-top: 20px;
 }
 
 .user-input {
