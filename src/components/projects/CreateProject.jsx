@@ -1,11 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-// import WordList from "./WordList";
-// import { thunk_action_creator } from "../../actions/fetchAction";
 import Phrase from "./Phrase";
 import { createProject } from "../../actions/projectAction";
 import GenerateMagnet from "./GenerateMagnet";
 // import { Redirect } from "react-router-dom";
+import html2canvas from "html2canvas";
+import SaveImage from "./SaveImage";
+
+// window.html2canvas = html2canvas;
 
 class CreateProject extends React.Component {
   state = {
@@ -28,6 +30,14 @@ class CreateProject extends React.Component {
     this.props.createProject(this.state);
     this.props.history.push("/");
   };
+
+  onImageSave = (elementId: string, id: string) => () => {
+    const input = document.getElementById(elementId);
+    html2canvas(input, { scale: 2.5 }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png", 1.0);
+      window.location.href = imgData;
+    });
+  };
   render() {
     const { auth } = this.props;
     // if (!auth.uid) return <Redirect to="/signin" />;
@@ -39,16 +49,18 @@ class CreateProject extends React.Component {
         <div className="col s12 m12 l5 center phrase-area">
           <div className="row">
             <div className="phrase-container">
-              <Phrase
-                word={this.state.selectedWord}
-                key={this.state.selectedWord.index}
-              />
+              <SaveImage elementId="sheet">
+                <Phrase
+                  word={this.state.selectedWord}
+                  key={this.state.selectedWord.index}
+                />
+              </SaveImage>
             </div>
           </div>
           <div className="row">
             <div className="col s12 m12 l12 project-submit">
               <form>
-                {!this.state.selectedWord && auth.uid === false ? (
+                {this.state.selectedWord || !auth.uid === null ? (
                   <button
                     onClick={this.onPhraseSave}
                     className="waves-effect waves-light btn project-submit-btn blue-grey darken-1"
@@ -70,7 +82,7 @@ class CreateProject extends React.Component {
                 </button>
 
                 <button
-                  onClick={this.handleClear}
+                  onClick={this.onImageSave("sheet", "1")}
                   className="waves-effect waves-light btn project-submit-btn  blue-grey darken-1"
                 >
                   Save as an image&thinsp;<i className="far fa-image"></i>
