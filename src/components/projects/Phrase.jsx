@@ -16,7 +16,7 @@ const Phrase = ({ word }) => {
     </div>
   ));
 
-  return <div className="flex-container">{userPhrase}</div>;
+  return <div className="flex-container phrase">{userPhrase}</div>;
 };
 
 export default Phrase;

@@ -6,6 +6,7 @@ import NavBar from "./layout/NavBar";
 import Dashboard from "./dashboard/Dashboard";
 import SignIn from "./auth/SignIn";
 import SignUp from "./auth/SignUp";
+import Footer from "./layout/Footer";
 
 class App extends React.Component {
   render() {
@@ -20,6 +21,7 @@ class App extends React.Component {
             <Route exact path="/signup" component={SignUp} />
           </Switch>
         </div>
+        <Footer />
       </BrowserRouter>
     );
   }

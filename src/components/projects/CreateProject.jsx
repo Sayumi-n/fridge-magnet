@@ -7,8 +7,6 @@ import GenerateMagnet from "./GenerateMagnet";
 import html2canvas from "html2canvas";
 import SaveImage from "./SaveImage";
 
-// window.html2canvas = html2canvas;
-
 class CreateProject extends React.Component {
   state = {
     selectedWord: "",
@@ -31,13 +29,23 @@ class CreateProject extends React.Component {
     this.props.history.push("/");
   };
 
-  onImageSave = (elementId: string, id: string) => () => {
-    const input = document.getElementById(elementId);
-    html2canvas(input, { scale: 2.5 }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png", 1.0);
-      window.location.href = imgData;
+  onImageSave = (elementId) => () => {
+    html2canvas(document.getElementById(elementId), {
+      logging: true,
+      letterRendering: 1,
+      allowTaint: false,
+      useCORS: true,
+      // scale: 2.5,
+      width: 800,
+      height: 280,
+    }).then((canvas) => {
+      const link = document.createElement("a");
+      link.href = canvas.toDataURL("image/jpg");
+      link.download = "screenshot.jpg";
+      link.click();
     });
   };
+
   render() {
     const { auth } = this.props;
     // if (!auth.uid) return <Redirect to="/signin" />;
@@ -47,9 +55,12 @@ class CreateProject extends React.Component {
         <h5 className="title">Create new poetry</h5>
         <GenerateMagnet onWordSelect={this.onWordSelect} />
         <div className="col s12 m12 l5 center phrase-area">
-          <div className="row">
+          <div className="row" id="sheet">
             <div className="phrase-container">
-              <SaveImage elementId="sheet">
+              <SaveImage
+                elementId="sheet"
+                onClick={this.onImageSave("sheet", "1")}
+              >
                 <Phrase
                   word={this.state.selectedWord}
                   key={this.state.selectedWord.index}
@@ -60,7 +71,7 @@ class CreateProject extends React.Component {
           <div className="row">
             <div className="col s12 m12 l12 project-submit">
               <form>
-                {this.state.selectedWord || !auth.uid === null ? (
+                {this.state.selectedWord && !auth.uid === null ? (
                   <button
                     onClick={this.onPhraseSave}
                     className="waves-effect waves-light btn project-submit-btn blue-grey darken-1"
@@ -68,12 +79,7 @@ class CreateProject extends React.Component {
                     Save
                   </button>
                 ) : null}
-                {/* <button
-                  onClick={this.onPhraseSave}
-                  className="waves-effect waves-light btn project-submit-btn blue-grey darken-1"
-                >
-                  Save
-                </button> */}
+
                 <button
                   onClick={this.handleClear}
                   className="waves-effect waves-light btn project-submit-btn blue-grey darken-1 "
