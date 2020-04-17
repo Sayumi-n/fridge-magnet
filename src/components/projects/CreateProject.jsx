@@ -35,14 +35,15 @@ class CreateProject extends React.Component {
       letterRendering: 1,
       allowTaint: false,
       useCORS: true,
-      // scale: 2.5,
-      width: 800,
-      height: 280,
+      scale: 2.5,
+      width: 340,
+      height: 250,
     }).then((canvas) => {
       const link = document.createElement("a");
       link.href = canvas.toDataURL("image/jpg");
       link.download = "screenshot.jpg";
       link.click();
+      console.log(link);
     });
   };
 
@@ -55,51 +56,53 @@ class CreateProject extends React.Component {
         <h5 className="title">Create new poetry</h5>
         <GenerateMagnet onWordSelect={this.onWordSelect} />
         <div className="col s12 m12 l5 center phrase-area">
-          <div className="row" id="sheet">
-            <div className="phrase-container">
-              <SaveImage
-                elementId="sheet"
-                onClick={this.onImageSave("sheet", "1")}
-              >
-                <Phrase
-                  word={this.state.selectedWord}
-                  key={this.state.selectedWord.index}
-                />
-              </SaveImage>
-            </div>
+          <div className="phrase-container" id="sheet">
+            <SaveImage elementId="sheet">
+              <Phrase
+                word={this.state.selectedWord}
+                key={this.state.selectedWord.index}
+              />
+            </SaveImage>
           </div>
-          <div className="row">
+
+          <div className="">
             <div className="col s12 m12 l12 project-submit">
-              <form>
-                {this.state.selectedWord && !auth.uid === null ? (
-                  <button
-                    onClick={this.onPhraseSave}
-                    className="waves-effect waves-light btn project-submit-btn blue-grey darken-1"
-                  >
-                    Save
-                  </button>
-                ) : null}
-
+              {!this.state.selectedWord === false && !auth.uid === false ? (
                 <button
-                  onClick={this.handleClear}
-                  className="waves-effect waves-light btn project-submit-btn blue-grey darken-1 "
-                >
-                  Clear
-                </button>
-
-                <button
-                  onClick={this.onImageSave("sheet", "1")}
-                  className="waves-effect waves-light btn project-submit-btn  blue-grey darken-1"
-                >
-                  Save as an image&thinsp;<i className="far fa-image"></i>
-                </button>
-                <button
-                  onClick={this.handleClear}
+                  onClick={this.onPhraseSave}
                   className="waves-effect waves-light btn project-submit-btn blue-grey darken-1"
                 >
-                  Share with twitter&thinsp;<i className="fab fa-twitter"></i>
+                  Save
                 </button>
-              </form>
+              ) : (
+                <button
+                  onClick={this.onPhraseSave}
+                  className="waves-effect waves-light disabled btn project-submit-btn blue-grey darken-1"
+                >
+                  Save
+                </button>
+              )}
+
+              <button
+                onClick={this.handleClear}
+                className="waves-effect waves-light btn project-submit-btn blue-grey darken-1 "
+              >
+                Clear
+              </button>
+              <button
+                onClick={this.onImageSave("sheet", "1")}
+                className="waves-effect waves-light btn project-submit-btn  blue-grey darken-1"
+              >
+                Save as an image&thinsp;<i className="far fa-image"></i>
+              </button>
+
+              <button
+                onClick={this.handleClear}
+                className="disabled waves-effect waves-light btn project-submit-btn blue-grey darken-1"
+              >
+                Share with twitter&thinsp;<i className="fab fa-twitter"></i>
+              </button>
+              <p>*Sign up to save your Haiku.</p>
             </div>
           </div>
         </div>

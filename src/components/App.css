@@ -75,6 +75,11 @@ footer {
 .magnet-area {
   margin: 0;
 }
+#topic {
+  width: 200px;
+  margin: 20px;
+}
+
 .wordList {
   margin: 0;
   padding: 0;
@@ -114,12 +119,18 @@ footer {
 .phrase-container {
   background-color: #cfd8dc;
   padding: 5px;
+  width: 340px;
+  margin: 0 auto;
   min-height: 250px;
   border-radius: 10px;
 }
 .phrase {
   width: 100%;
 }
+/* #sheet {
+  margin: 0 auto;
+  width: 330px;
+} */
 .flex-container {
   display: flex;
   justify-content: center;
@@ -150,6 +161,7 @@ footer {
 }
 .project-submit {
   display: block;
+  margin: 0 auto;
 }
 .project-submit-btn {
   margin: 10px;

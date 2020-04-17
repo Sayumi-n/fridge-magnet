@@ -1,9 +1,8 @@
 import React from "react";
 
-const SaveImage = ({ children, elementId, onClick }) => {
+const SaveImage = ({ children, elementId }) => {
   return (
     <>
-      <button onClick={() => onClick()}>PDFをダウンロードする</button>
       <div id={elementId}>{children}</div>
     </>
   );

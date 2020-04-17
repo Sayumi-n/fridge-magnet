@@ -4,7 +4,7 @@ import WordList from "./WordList";
 import { thunk_action_creator } from "../../actions/fetchAction";
 
 class GenerateMagnet extends React.Component {
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const userInput = this.getUserInput.value;
     this.props.dispatch(thunk_action_creator(userInput));
@@ -23,9 +23,8 @@ class GenerateMagnet extends React.Component {
                 placeholder="Topic *Noun works best!"
                 id="topic"
                 required
-                ref={input => (this.getUserInput = input)}
+                ref={(input) => (this.getUserInput = input)}
               />
-
               <button className="waves-effect waves-light btn magnet-btn blue-grey darken-1">
                 Generate Magnets
               </button>
@@ -49,9 +48,9 @@ class GenerateMagnet extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    data: state.async
+    data: state.async,
   };
 };
 

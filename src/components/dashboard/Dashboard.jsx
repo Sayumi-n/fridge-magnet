@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
         </Link>
         <div className="row">
           <div className="col s12 m12 l12">
-            <ProjectList projects={projects} />
+            <ProjectList projects={projects} auth={auth} />
           </div>
         </div>
       </div>
@@ -38,6 +38,7 @@ export default compose(
   firestoreConnect([
     {
       collection: "projects",
+      orderBy: ["createdAt", "desc"],
     },
   ])
 )(Dashboard);
