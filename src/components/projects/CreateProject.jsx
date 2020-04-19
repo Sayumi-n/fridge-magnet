@@ -51,6 +51,7 @@ class CreateProject extends React.Component {
     const { auth } = this.props;
     // if (!auth.uid) return <Redirect to="/signin" />;
     // console.log(this.state.selectedWord);
+
     return (
       <div className="row">
         <h5 className="title">Create new poetry</h5>

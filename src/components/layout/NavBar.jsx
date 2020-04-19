@@ -16,7 +16,8 @@ const NavBar = (props) => {
   return (
     <nav className="nav-wrapper teal lighten-3">
       <Link to="/" className="brand-logo left logo">
-        Fridge Haiku
+        Fridge Haiku{" "}
+        <img src="images/fridge.png" alt="" style={{ width: "18px" }} />
       </Link>
       <div className="container">{links}</div>
     </nav>
