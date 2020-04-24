@@ -13,7 +13,7 @@ const Phrase = ({ word }) => {
 
   const userPhrase = word.map((w, index) => (
     <div key={index} className="phrase-item-margin">
-      <span className="phrase-item">{w}</span>
+      <span className="phrase-item noTextHighLight">{w}</span>
     </div>
   ));
 

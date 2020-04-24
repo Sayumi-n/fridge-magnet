@@ -19,7 +19,7 @@ class GenerateMagnet extends React.Component {
             <div className="input-field user-input col l6 s12 offset-l3">
               <input
                 type="text"
-                className="center"
+                className="center noTextHighLight"
                 placeholder="Topic *Noun works best!"
                 id="topic"
                 required
@@ -38,7 +38,7 @@ class GenerateMagnet extends React.Component {
           ) : null}
           {Object.keys(this.props.data.userData).length > 0 ? (
             <WordList
-              words={this.props.data.userData}
+              fetchedWords={this.props.data.userData}
               onWordSelect={this.props.onWordSelect}
             />
           ) : null}

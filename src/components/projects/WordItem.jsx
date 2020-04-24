@@ -2,14 +2,15 @@ import React from "react";
 import LongPressHandler from "../layout/LongPressHandler";
 
 const WordItem = ({ word, onWordSelect }) => {
-  const longPress = LongPressHandler(LongPressHandler, 500);
+  // const longPress = LongPressHandler(LongPressHandler, 500);
+
   return (
     <li
       className="wordItem"
       onDoubleClick={() => onWordSelect(word)}
-      {...longPress}
+      // {...longPress}
     >
-      <span className="wordSpan">{word}</span>
+      <span className="wordSpan noTextHighLight">{word}</span>
     </li>
   );
 };

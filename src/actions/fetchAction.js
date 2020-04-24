@@ -23,15 +23,13 @@ export const thunk_action_creator = (userInput) => {
   const term = userInput.replace(/\s/g, "");
   store.dispatch(fetch_post());
   return function (dispatch, getState) {
-    return fetch(
-      `https://api.datamuse.com/words?topics=${term},pronoun&max=200`
-    )
+    return fetch(`https://api.datamuse.com/words?topics=${term}&max=125`)
       .then((data) => data.json())
       .then((data) => {
         if (data.message === "Not Found") {
           throw new Error("No such user found!!");
         } else dispatch(receive_post(data));
       })
-      .catch((err) => dispatch(receive_error()));
+      .catch((err) => dispatch(receive_error(err)));
   };
 };
