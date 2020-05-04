@@ -5,7 +5,7 @@ const Phrase = ({ word }) => {
     return (
       <div className="phrase">
         <p>Your Haiku Here...</p>
-        <p>Click to pass the words</p>
+        <p>Click the words to pass </p>
         <p>(Long press on your mobile)</p>
       </div>
     );

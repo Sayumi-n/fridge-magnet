@@ -19,7 +19,7 @@ class GenerateMagnet extends React.Component {
             <div className="input-field user-input col l6 s12 offset-l3">
               <input
                 type="text"
-                className="center noTextHighLight"
+                // className="center noTextHighLight"
                 placeholder="Topic *Noun works best!"
                 id="topic"
                 required
