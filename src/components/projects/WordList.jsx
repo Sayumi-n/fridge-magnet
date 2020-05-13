@@ -28,6 +28,8 @@ const WordList = ({ fetchedWords, onWordSelect }) => {
     { word: "have" },
     { word: "has" },
     { word: "had" },
+    { word: "make" },
+    { word: "made" },
   ];
   const renderedList = words.map((w, index) => (
     <WordItem key={index} word={w.word} onWordSelect={onWordSelect} />

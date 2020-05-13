@@ -11,6 +11,14 @@ class CreateProject extends React.Component {
   state = {
     selectedWord: "",
   };
+  componentDidMound() {
+    this.getElement();
+  }
+  getElement() {
+    const height = document.getElementById("sheet").clientHeight;
+    const width = document.getElementById("sheet").clientWidth;
+    console.log(height + width);
+  }
 
   onWordSelect = (word) => {
     this.setState({
@@ -36,7 +44,7 @@ class CreateProject extends React.Component {
       allowTaint: false,
       useCORS: true,
       scale: 2.5,
-      width: 340,
+      width: 320,
       height: 250,
     }).then((canvas) => {
       const link = document.createElement("a");
@@ -57,7 +65,7 @@ class CreateProject extends React.Component {
         <h5 className="title">Create new poetry</h5>
         <GenerateMagnet onWordSelect={this.onWordSelect} />
         <div className="col s12 m12 l5 center phrase-area">
-          <div className="phrase-container" id="sheet">
+          <div className="phrase-container">
             <SaveImage elementId="sheet">
               <Phrase
                 word={this.state.selectedWord}
