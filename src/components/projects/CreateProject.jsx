@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import Phrase from "./Phrase";
 import { createProject } from "../../actions/projectAction";
@@ -7,37 +7,32 @@ import GenerateMagnet from "./GenerateMagnet";
 import html2canvas from "html2canvas";
 import SaveImage from "./SaveImage";
 
-class CreateProject extends React.Component {
-  state = {
-    selectedWord: "",
-  };
-  componentDidMound() {
-    this.getElement();
-  }
-  getElement() {
-    const height = document.getElementById("sheet").clientHeight;
-    const width = document.getElementById("sheet").clientWidth;
-    console.log(height + width);
-  }
+// class CreateProject extends React.Component {
+const CreateProject = (props) => {
+  // state = {
+  //   selectedWord: "",
+  // };
 
-  onWordSelect = (word) => {
-    this.setState({
-      selectedWord: [...this.state.selectedWord, word],
+  const [state, setState] = useState({ selectedWord: "" });
+
+  const onWordSelect = (word) => {
+    setState({
+      selectedWord: [...state.selectedWord, word],
     });
   };
-  handleClear = (e) => {
+  const handleClear = (e) => {
     e.preventDefault();
-    this.setState({
+    setState({
       selectedWord: "",
     });
   };
-  onPhraseSave = (e) => {
+  const onPhraseSave = (e) => {
     e.preventDefault();
-    this.props.createProject(this.state);
-    this.props.history.push("/");
+    props.createProject(state);
+    props.history.push("/");
   };
 
-  onImageSave = (elementId) => () => {
+  const onImageSave = (elementId) => () => {
     html2canvas(document.getElementById(elementId), {
       logging: true,
       letterRendering: 1,
@@ -55,70 +50,67 @@ class CreateProject extends React.Component {
     });
   };
 
-  render() {
-    const { auth } = this.props;
-    // if (!auth.uid) return <Redirect to="/signin" />;
-    // console.log(this.state.selectedWord);
+  // render() {
+  const { auth } = props;
+  // if (!auth.uid) return <Redirect to="/signin" />;
+  // console.log(this.state.selectedWord);
 
-    return (
-      <div className="row">
-        <h5 className="title">Create new poetry</h5>
-        <GenerateMagnet onWordSelect={this.onWordSelect} />
-        <div className="col s12 m12 l5 center phrase-area">
-          <div className="phrase-container">
-            <SaveImage elementId="sheet">
-              <Phrase
-                word={this.state.selectedWord}
-                key={this.state.selectedWord.index}
-              />
-            </SaveImage>
-          </div>
+  return (
+    <div className="row">
+      <h5 className="title">Create new poetry</h5>
+      <GenerateMagnet onWordSelect={onWordSelect} />
+      <div className="col s12 m12 l5 center phrase-area">
+        <div className="phrase-container">
+          <SaveImage elementId="sheet">
+            <Phrase word={state.selectedWord} key={state.selectedWord.index} />
+          </SaveImage>
+        </div>
 
-          <div className="">
-            <div className="col s12 m12 l12 project-submit">
-              {!this.state.selectedWord === false && !auth.uid === false ? (
-                <button
-                  onClick={this.onPhraseSave}
-                  className="waves-effect waves-light btn project-submit-btn blue-grey darken-1"
-                >
-                  Save
-                </button>
-              ) : (
-                <button
-                  onClick={this.onPhraseSave}
-                  className="waves-effect waves-light disabled btn project-submit-btn blue-grey darken-1"
-                >
-                  Save
-                </button>
-              )}
-
+        <div className="">
+          <div className="col s12 m12 l12 project-submit">
+            {!state.selectedWord === false && !auth.uid === false ? (
               <button
-                onClick={this.handleClear}
-                className="waves-effect waves-light btn project-submit-btn blue-grey darken-1 "
+                onClick={onPhraseSave}
+                className="waves-effect waves-light btn project-submit-btn blue-grey darken-1"
               >
-                Clear
+                Save
               </button>
+            ) : (
               <button
-                onClick={this.onImageSave("sheet", "1")}
-                className="waves-effect waves-light btn project-submit-btn  blue-grey darken-1"
+                onClick={onPhraseSave}
+                className="waves-effect waves-light disabled btn project-submit-btn blue-grey darken-1"
               >
-                Save as an image&thinsp;<i className="far fa-image"></i>
+                Save
               </button>
+            )}
 
-              <button
-                onClick={this.handleClear}
-                className="disabled waves-effect waves-light btn project-submit-btn blue-grey darken-1"
-              >
-                Share with twitter&thinsp;<i className="fab fa-twitter"></i>
-              </button>
-              <p>*Sign up to save your Haiku.</p>
-            </div>
+            <button
+              onClick={handleClear}
+              className="waves-effect waves-light btn project-submit-btn blue-grey darken-1 "
+            >
+              Clear
+            </button>
+            <button
+              onClick={onImageSave("sheet", "1")}
+              className="waves-effect waves-light btn project-submit-btn  blue-grey darken-1"
+            >
+              Save as an image&thinsp;<i className="far fa-image"></i>
+            </button>
+
+            <button
+              onClick={handleClear}
+              className="disabled waves-effect waves-light btn project-submit-btn blue-grey darken-1"
+            >
+              Share with twitter&thinsp;<i className="fab fa-twitter"></i>
+            </button>
+            <p>*Sign up to save your Haiku.</p>
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+// }
 
 const mapStateToProps = (state) => {
   return {
