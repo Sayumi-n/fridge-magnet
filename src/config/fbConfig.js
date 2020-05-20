@@ -6,7 +6,7 @@ const KEY = process.env.REACT_APP_API_KEY;
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: KEY,
+  apiKey: "AIzaSyCDBEnzmvobkeIzD0q1DOL0Nq8mdjj0_Hc",
   authDomain: "fridge-poetter.firebaseapp.com",
   databaseURL: "https://fridge-poetter.firebaseio.com",
   projectId: "fridge-poetter",
