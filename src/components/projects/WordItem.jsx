@@ -1,14 +1,8 @@
 import React from "react";
 
 const WordItem = ({ word, onWordSelect }) => {
-  // const longPress = LongPressHandler(LongPressHandler, 500);
-
   return (
-    <li
-      className="wordItem"
-      onClick={() => onWordSelect(word)}
-      // {...longPress}
-    >
+    <li className="wordItem" onClick={() => onWordSelect(word)}>
       <span className="wordSpan noTextHighLight">{word}</span>
     </li>
   );
