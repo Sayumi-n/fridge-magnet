@@ -14,7 +14,12 @@ Website:[Fridge Haiku](https://sayuminakamura.com/)💻
 
 This is basically made with front end language.
 
--[React.js](https://reactjs.org/) -[Redux](https://redux.js.org/) -[Firebase](https://firebase.google.com/?hl=ja) -[html2canvas](https://html2canvas.hertzen.com/) -[Materialize](https://materializecss.com/) -[Datamuse API](https://www.datamuse.com/api/)
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [Firebase](https://firebase.google.com/?hl=ja)
+- [html2canvas](https://html2canvas.hertzen.com/)
+- [Materialize](https://materializecss.com/)
+- [Datamuse API](https://www.datamuse.com/api/)
 
 <br/>
 
