@@ -9,12 +9,16 @@ export class SignIn extends Component {
     email: "",
     password: "",
   };
+
+  // handle input change
   onInputChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value,
     });
   };
-  onFromSubmit = (e) => {
+
+  // handle form submit
+  onFormSubmit = (e) => {
     e.preventDefault();
     this.props.signIn(this.state);
   };
@@ -25,7 +29,7 @@ export class SignIn extends Component {
     return (
       <div>
         <div className="container">
-          <form onSubmit={this.onFromSubmit} className="sign-in-form">
+          <form onSubmit={this.onFormSubmit} className="sign-in-form">
             <h5 className="grey-text text-darken-3">Log In</h5>
             <div className="input-field">
               <label htmlFor="email">Email</label>

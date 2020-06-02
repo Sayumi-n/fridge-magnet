@@ -7,12 +7,7 @@ import GenerateMagnet from "./GenerateMagnet";
 import html2canvas from "html2canvas";
 import SaveImage from "./SaveImage";
 
-// class CreateProject extends React.Component {
 const CreateProject = (props) => {
-  // state = {
-  //   selectedWord: "",
-  // };
-
   const [state, setState] = useState({ selectedWord: "" });
 
   const onWordSelect = (word) => {
@@ -50,7 +45,6 @@ const CreateProject = (props) => {
     });
   };
 
-  // render() {
   const { auth } = props;
   // if (!auth.uid) return <Redirect to="/signin" />;
   // console.log(this.state.selectedWord);
@@ -110,7 +104,6 @@ const CreateProject = (props) => {
     </div>
   );
 };
-// }
 
 const mapStateToProps = (state) => {
   return {

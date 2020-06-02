@@ -43,7 +43,7 @@ function AuthIsLoaded({ children }) {
             </div>
           </div>
         </div>
-        <div>Loading Fridge Poetter...</div>
+        <div>Loading Fridge Haiku...</div>
       </>
     );
   return children;
