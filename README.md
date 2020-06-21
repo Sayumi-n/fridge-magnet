@@ -23,6 +23,11 @@ This is basically made with front end language.
 
 <br/>
 
+## App Structure
+![fridge haiku](https://user-images.githubusercontent.com/53948936/85224002-29a78480-b402-11ea-8550-a70db548788e.png)
+
+<br/>
+
 ## Upcoming features🔜
 
 - Share image with Twitter as a Tweet
