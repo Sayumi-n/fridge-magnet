@@ -6,7 +6,7 @@ Fridge Haiku is a website that you can generate fridge-magnet-like words with a 
 
 <br/>
 
-Website:[Fridge Haiku](https://sayuminakamura.com/)💻
+Website:[Fridge Haiku](https://fridge-haiku.netlify.app)💻
 
 <br/>
 
