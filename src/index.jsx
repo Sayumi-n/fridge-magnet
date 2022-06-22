@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import App from "./components/App";
 import store from "./store";
 import { Provider } from "react-redux";
@@ -10,6 +9,26 @@ import { createFirestoreInstance } from "redux-firestore";
 // import fbConfig from "./config/fbConfig";
 import { useSelector } from "react-redux";
 import { isLoaded } from "react-redux-firebase";
+import { datadogRum } from "@datadog/browser-rum";
+
+// Your Datadog RUM configuration
+const RUM_APP_ID = process.env.REACT_APP_RUM_APP_ID;
+const RUM_CLIENT_TOKEN = process.env.REACT_APP_RUM_CLIENT_TOKEN;
+
+datadogRum.init({
+  applicationId: RUM_APP_ID,
+  clientToken: RUM_CLIENT_TOKEN,
+  site: "datadoghq.com",
+  service: "test_login",
+  // Specify a version number to identify the deployed version of your application in Datadog
+  // version: '1.0.0',
+  sampleRate: 100,
+  premiumSampleRate: 100,
+  trackInteractions: true,
+  defaultPrivacyLevel: "mask-user-input",
+});
+
+datadogRum.startSessionReplayRecording();
 
 const profileSpecificProps = {
   userProfile: "users",

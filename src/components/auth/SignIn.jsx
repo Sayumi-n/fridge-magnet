@@ -84,4 +84,5 @@ const mapStateToProps = (state) => {
     auth: state.firebase.auth,
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

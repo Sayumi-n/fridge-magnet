@@ -1,4 +1,5 @@
 import { auth } from "firebase/app";
+import { datadogRum } from '@datadog/browser-rum';
 
 export const signIn = (credentials) => {
   return (dispatch, getState) => {
@@ -10,6 +11,9 @@ export const signIn = (credentials) => {
       })
       .catch((err) => {
         dispatch({ type: "LOGIN_ERROR", err });
+      });
+      datadogRum.setUser({
+        email: credentials.email,
       });
   };
 };

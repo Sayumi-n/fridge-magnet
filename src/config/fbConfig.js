@@ -2,11 +2,10 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 
-const KEY = process.env.REACT_APP_API_KEY;
-
 // Your web app's Firebase configuration
+const KEY = process.env.REACT_APP_API_KEY;
 var firebaseConfig = {
-  apiKey: "AIzaSyCDBEnzmvobkeIzD0q1DOL0Nq8mdjj0_Hc",
+  apiKey: KEY,
   authDomain: "fridge-poetter.firebaseapp.com",
   databaseURL: "https://fridge-poetter.firebaseio.com",
   projectId: "fridge-poetter",
