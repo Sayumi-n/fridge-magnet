@@ -36,6 +36,6 @@ This is basically made with front end language.
 
 ## Author
 
-Launched 2020 by [Sayumi](https://sayuminakamura.com/)
+Launched 2020 by [Sayumi](https://sayuminakamura.dev/)
 
 <br/>
